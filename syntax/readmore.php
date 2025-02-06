@@ -29,6 +29,9 @@ class syntax_plugin_include_readmore extends DokuWiki_Syntax_Plugin {
             $renderer->p_open();
         }
 
+        #ahmet: internallink considers page to be relative, but at this point, it should be an absolute id.
+        if(substr($page,0,1)!==':') $page = ':'.$page;
+        
         $renderer->internallink($page, $this->getLang('readmore'));
 
         if ($mode == 'xhtml') {
